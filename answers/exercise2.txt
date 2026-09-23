@@ -1,0 +1,15 @@
+Eusabious@MacBook-Air fullstack-open-containers % docker container run -it --name hello-ubuntu ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+70624a8d6970: Pull complete
+7cb168fccdd2: Pull complete
+3ecee16d5b77: Download complete
+Digest: sha256:da6fc2be547864451aa253836dd926da33623312df4a9a243e35dc877c378a78
+Status: Downloaded newer image for ubuntu:latest
+root@672cb908f626:/# mkdir -p /usr/src/app
+root@672cb908f626:/# touch /usr/src/app/index.js
+root@672cb908f626:/# ls -l /usr/src/app
+total 0
+-rw-r--r-- 1 root root 0 Sep 23 13:38 index.js
+root@672cb908f626:/# exit
+exit
