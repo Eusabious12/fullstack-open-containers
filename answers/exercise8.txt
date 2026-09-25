@@ -1,0 +1,74 @@
+Eusabious@MacBook-Air fullstack-open-containers % docker exec -it todo-backend-mongo-1 mongosh -u root -p example
+Current Mongosh Log ID:	6ab61d01d172d13e9d644801
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.11.1
+Using MongoDB:		8.3.11
+Using Mongosh:		2.11.1
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, pseudo-anonymous usage data is collected from interactive and agentic sessions only, and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2026-09-25T05:10:44.117+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-09-25T05:10:44.409+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-09-25T05:10:44.409+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-09-25T05:10:44.409+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> 
+
+test> show dbs
+| use the_database
+| show collections
+| db.todos.find({})
+| db.todos.insertOne({ text: "Increase the number of tools in my tool belt", done: false })
+| db.todos.find({})
+admin         100.00 KiB
+config         80.00 KiB
+local          72.00 KiB
+the_database   56.00 KiB
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6ab6025390c7e117f8ba6468'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6ab6025390c7e117f8ba6469'),
+    text: 'Learn about containers',
+    done: true
+  }
+]
+the_database> db.todos.insertOne({ text: "Increase the number of tools in my tool belt", done: false })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6ab61d75d172d13e9d644802')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6ab6025390c7e117f8ba6468'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6ab6025390c7e117f8ba6469'),
+    text: 'Learn about containers',
+    done: true
+  },
+  {
+    _id: ObjectId('6ab61d75d172d13e9d644802'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> exit
+Eusabious@MacBook-Air fullstack-open-containers % 
