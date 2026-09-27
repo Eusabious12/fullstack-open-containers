@@ -1,0 +1,31 @@
+services:
+  frontend:
+    image: blog-front
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+  backend:
+    image: blog-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongo:27017/bloglist
+      - SECRET=prodsecret
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    depends_on:
+      - frontend
+      - backend
